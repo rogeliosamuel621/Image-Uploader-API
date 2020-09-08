@@ -8,21 +8,7 @@ export function uploadImageController(req: Request, res: Response): any {
       error: true,
       statusCode: BAD_REQUEST,
       data: null,
-      message: 'No image provided',
-    });
-  }
-
-  if (
-    req.file.mimetype !== 'image/svg+xml' &&
-    req.file.mimetype !== 'image/jpeg' &&
-    req.file.mimetype !== 'image/png' &&
-    req.file.mimetype !== 'image/vnd.microsoft.icon'
-  ) {
-    return res.json({
-      error: true,
-      statusCode: BAD_REQUEST,
-      data: null,
-      message: 'these types of files are not allowed',
+      message: 'Only images are allowed',
     });
   }
 
