@@ -4,7 +4,9 @@
   "description": "An API for an application where you can storage your images in the cloud.",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "API-KEY": "node ./src/utils/create-API-key.js",
+    "JWT-SECRET": "node ./src/utils/create-JWT-secret.js"
   },
   "repository": {
     "type": "git",
