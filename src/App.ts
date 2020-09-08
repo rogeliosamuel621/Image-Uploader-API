@@ -8,6 +8,7 @@ import {
 
 import uploadImage from './routes/uploadImage.routes';
 import APIKeyMiddleware from './middlewares/apiKey.middlewares';
+import NotFound from './middlewares/notFound.middleware';
 
 class Server {
   private App: Application;
@@ -17,6 +18,7 @@ class Server {
     this.Settings();
     this.MiddlewaresInput();
     this.Routes();
+    this.MiddlewareOutput();
   }
 
   private Settings(): void {
@@ -34,6 +36,10 @@ class Server {
 
   private Routes(): void {
     this.App.use('/api', uploadImage);
+  }
+
+  private MiddlewareOutput(): void {
+    this.App.use(NotFound);
   }
 
   public StartServer(): void {
