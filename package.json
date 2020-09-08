@@ -4,7 +4,9 @@
   "description": "An API for an application where you can storage your images in the cloud.",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "build": "tsc",
+    "prod": "node ./dist/index.js"
   },
   "repository": {
     "type": "git",

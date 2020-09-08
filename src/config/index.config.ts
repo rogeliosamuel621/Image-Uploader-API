@@ -1,6 +1,7 @@
 import { config } from 'dotenv';
 config();
 
+export const port = process.env.PORT as string;
 export const api_key = process.env.API_KEY;
 export const jwt_key = process.env.JWT_SECRET;
 export const cloudinary_cloud_name = process.env.CLOUDINARY_CLOUD_NAME;
