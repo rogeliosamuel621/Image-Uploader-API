@@ -1,10 +1,31 @@
 import { Request, Response } from 'express';
-import multer from 'multer';
 import { v2 } from 'cloudinary';
-import { INTERNAL_SERVER_ERROR, OK } from 'http-status-codes';
-const upload = multer();
+import { INTERNAL_SERVER_ERROR, OK, BAD_REQUEST } from 'http-status-codes';
 
 export function uploadImageController(req: Request, res: Response): any {
+  if (!req.file) {
+    return res.json({
+      error: true,
+      statusCode: BAD_REQUEST,
+      data: null,
+      message: 'No image provided',
+    });
+  }
+
+  if (
+    req.file.mimetype !== 'image/svg+xml' &&
+    req.file.mimetype !== 'image/jpeg' &&
+    req.file.mimetype !== 'image/png' &&
+    req.file.mimetype !== 'image/vnd.microsoft.icon'
+  ) {
+    return res.json({
+      error: true,
+      statusCode: BAD_REQUEST,
+      data: null,
+      message: 'these types of files are not allowed',
+    });
+  }
+
   const url = `/Users/Samuel/Documents/Develop/image-uploader-API/img/${req.file.originalname}`;
 
   v2.uploader.upload(url, (err, result) => {
