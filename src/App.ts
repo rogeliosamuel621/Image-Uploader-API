@@ -1,14 +1,16 @@
-import Express, { Application } from 'express';
-import { v2 } from 'cloudinary';
+import Express, { Application } from "express";
+import { v2 } from "cloudinary";
 import {
   cloudinary_cloud_name,
   cloudinary_api_key,
   cloudinary_api_secret,
-} from './config/index.config';
+} from "./config/index.config";
+import cors from "cors";
+import morgan from "morgan";
 
-import uploadImage from './routes/uploadImage.routes';
-import APIKeyMiddleware from './middlewares/apiKey.middlewares';
-import NotFound from './middlewares/notFound.middleware';
+import uploadImage from "./routes/uploadImage.routes";
+import APIKeyMiddleware from "./middlewares/apiKey.middlewares";
+import NotFound from "./middlewares/notFound.middleware";
 
 class Server {
   private App: Application;
@@ -22,7 +24,7 @@ class Server {
   }
 
   private Settings(): void {
-    this.App.set('port', this.port);
+    this.App.set("port", this.port);
     v2.config({
       cloud_name: cloudinary_cloud_name,
       api_key: cloudinary_api_key,
@@ -31,11 +33,13 @@ class Server {
   }
 
   private MiddlewaresInput(): void {
+    this.App.use(cors());
     this.App.use(APIKeyMiddleware);
+    this.App.use(morgan("dev"));
   }
 
   private Routes(): void {
-    this.App.use('/api', uploadImage);
+    this.App.use("/api", uploadImage);
   }
 
   private MiddlewareOutput(): void {
@@ -43,8 +47,8 @@ class Server {
   }
 
   public StartServer(): void {
-    this.App.listen(this.App.get('port'));
-    console.log('Wroking');
+    this.App.listen(this.App.get("port"));
+    console.log("Wroking");
   }
 }
 

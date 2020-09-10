@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
-import { v2 } from 'cloudinary';
-import { INTERNAL_SERVER_ERROR, OK, BAD_REQUEST } from 'http-status-codes';
+import { Request, Response } from "express";
+import { v2 } from "cloudinary";
+import { INTERNAL_SERVER_ERROR, OK, BAD_REQUEST } from "http-status-codes";
 
 export function uploadImageController(req: Request, res: Response): any {
   if (!req.file) {
@@ -8,7 +8,7 @@ export function uploadImageController(req: Request, res: Response): any {
       error: true,
       statusCode: BAD_REQUEST,
       data: null,
-      message: 'Only images are allowed',
+      message: "Only images are allowed",
     });
   }
 
@@ -20,7 +20,7 @@ export function uploadImageController(req: Request, res: Response): any {
         error: true,
         statusCode: INTERNAL_SERVER_ERROR,
         data: null,
-        message: 'An error has occurred uploading your image, try later',
+        message: "An error has occurred uploading your image, try later",
       });
     }
 
