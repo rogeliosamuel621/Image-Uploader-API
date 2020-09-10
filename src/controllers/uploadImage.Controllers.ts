@@ -12,7 +12,7 @@ export function uploadImageController(req: Request, res: Response): any {
     });
   }
 
-  const url = `../img/${req.file.originalname}`;
+  const url = `/Users/Samuel/Documents/Develop/image-uploader-API/img/${req.file.originalname}`;
 
   v2.uploader.upload(url, (err, result) => {
     if (err) {
