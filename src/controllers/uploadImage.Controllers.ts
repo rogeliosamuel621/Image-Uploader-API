@@ -13,7 +13,7 @@ export function uploadImageController(req: Request, res: Response): any {
     });
   }
 
-  const url = path.resolve(__dirname, `img/${req.file.originalname}`);
+  const url = path.resolve(__dirname, `../img/${req.file.originalname}`);
 
   v2.uploader.upload(url, (err, result) => {
     if (err) {
