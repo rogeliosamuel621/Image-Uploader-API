@@ -35,7 +35,6 @@ class Server {
   private MiddlewaresInput(): void {
     this.App.use(cors());
     this.App.use(APIKeyMiddleware);
-    this.App.use(morgan("dev"));
   }
 
   private Routes(): void {
