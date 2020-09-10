@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { v2 } from "cloudinary";
 import { INTERNAL_SERVER_ERROR, OK, BAD_REQUEST } from "http-status-codes";
+import path from "path";
 
 export function uploadImageController(req: Request, res: Response): any {
   if (!req.file) {
@@ -12,7 +13,7 @@ export function uploadImageController(req: Request, res: Response): any {
     });
   }
 
-  const url = `dist/image-uploader-api/img/${req.file.originalname}`;
+  const url = path.resolve(__dirname, `img/${req.file.originalname}`);
 
   v2.uploader.upload(url, (err, result) => {
     if (err) {
