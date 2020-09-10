@@ -34,7 +34,7 @@ class Server {
 
   private MiddlewaresInput(): void {
     this.App.use(cors());
-    this.App.use(APIKeyMiddleware);
+    // this.App.use(APIKeyMiddleware);
   }
 
   private Routes(): void {
