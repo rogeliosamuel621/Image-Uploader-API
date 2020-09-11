@@ -1,6 +1,6 @@
 {
   "name": "image-uploader-api",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "An API for an application where you can storage your images in the cloud.",
   "main": "src/index.ts",
   "scripts": {

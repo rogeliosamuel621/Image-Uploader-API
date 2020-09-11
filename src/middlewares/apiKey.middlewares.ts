@@ -7,13 +7,10 @@ APIKeyMiddleware.use((req: Request, res: Response, next: NextFunction) => {
   const API_KEY = req.headers["api-key"];
 
   if (!API_KEY || API_KEY !== api_key) {
-    return res.json({
+    return res.status(UNAUTHORIZED).json({
       error: true,
       statusCode: UNAUTHORIZED,
-      data: {
-        apiKeyHeroku: api_key,
-        apiKeyFrontend: API_KEY,
-      },
+      data: null,
       message: "NO API KEY PROVIDED",
     });
   }
